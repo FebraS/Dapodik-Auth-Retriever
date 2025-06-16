@@ -2,7 +2,7 @@
 
 <img src="https://github.com/FebraS/Dapodik-Auth-Retriever/blob/main/assets/DapodikAuthRetriever.png" alt="Contoh Gambar 150x100px" width="250" height="250">
 
-Dapodik Auth Retriever adalah sebuah alat utilitas yang membantu pengguna yang sah (misalnya, operator sekolah, guru, atau kepala sekolah) Mendapatkan informasi otentikasi yang diperlukan dari instalasi Dapodik secara cepat.
+Dapodik Auth Retriever adalah sebuah aplikasi utilitas yang membantu pengguna yang sah (misalnya, operator sekolah, guru, atau kepala sekolah) untuk mendapatkan informasi otentikasi yang diperlukan dari instalasi Dapodik secara cepat.
 
 ### Fitur
 
@@ -15,7 +15,7 @@ Dapodik Auth Retriever adalah sebuah alat utilitas yang membantu pengguna yang s
 
 1.  Pastikan aplikasi **Dapodik Anda sudah terinstal** di komputer.
 2.  Unduh file `DapodikAuthRetriever.exe` pada repositori ini.
-3.  Jalankan aplikasi. Aplikasi akan secara otomatis mencoba mendeteksi DAN menampilkan data otentikasi pada file keluaran `OutputRetriever.txt`.
+3.  Jalankan aplikasi. Aplikasi akan secara otomatis mencoba mendeteksi dan menampilkan data otentikasi pada file keluaran `OutputRetriever.txt`.
 <img src="https://github.com/FebraS/Dapodik-Auth-Retriever/blob/main/assets/outputfile.jpg" alt="Tampilan File OutputRetriever">
 4.  Salin informasi yang ditampilkan untuk digunakan pada aplikasi atau sistem lain yang membutuhkan.
 
