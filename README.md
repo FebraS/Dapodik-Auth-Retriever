@@ -1,14 +1,28 @@
 # Dapodik-Auth-Retriever
 
-Dapodik Auth Retriever adalah sebuah alat utilitas yang membantu pengguna yang sah (misalnya, operator sekolah, guru, atau kepala sekolah) untuk mengelola atau memulihkan kredensial autentikasi (kode registrasi, username, dan password) mereka sendiri yang terkait dengan sistem Dapodik.
+<img src="https://github.com/FebraS/Dapodik-Auth-Retriever/blob/main/assets/DapodikAuthRetriever.png" alt="Contoh Gambar 150x100px" width="250" height="250">
 
-<img src="https://github.com/FebraS/Dapodik-Auth-Retriever/blob/main/assets/DapodikAuthRetriever.png" alt="Contoh Gambar 150x100px" width="350" height="350">
+Dapodik Auth Retriever adalah sebuah alat utilitas yang membantu pengguna yang sah (misalnya, operator sekolah, guru, atau kepala sekolah) Mendapatkan informasi otentikasi yang diperlukan dari instalasi Dapodik secara cepat.
 
-## Cara Penggunaan
-Anda hanya perlu mengeksekusi alat utilias ini pada perangkat yang telah terpasang dapodik di dalamnya.
-Kemudian alat ini akan menghasilkan file yang bernama OutputRetriever.txt
+### Fitur
 
+* **Pengambilan Auth Otomatis:** Secara cerdas mendeteksi dan mengambil data otentikasi dari lokasi instalasi Dapodik.
+* **Antarmuka Sederhana:** Desain yang intuitif dan mudah digunakan, bahkan bagi pengguna non-teknis.
+* **Ringan & Cepat:** Aplikasi berukuran kecil yang tidak membebani sistem Anda.
+* **Portabel:** Cukup unduh file `.exe` dan jalankan tanpa perlu instalasi khusus.
+
+### Cara Penggunaan
+
+1.  Pastikan aplikasi **Dapodik Anda sudah terinstal** di komputer.
+2.  Unduh file `DapodikAuthRetriever.exe` pada repositori ini.
+3.  Jalankan aplikasi. Aplikasi akan secara otomatis mencoba mendeteksi dan menampilkan data otentikasi, dan membuat file keluaran yang benar `OutputRetriever.txt`.
 <img src="https://github.com/FebraS/Dapodik-Auth-Retriever/blob/main/assets/outputfile.jpg" alt="Tampilan File OutputRetriever">
+4.  Salin informasi yang ditampilkan untuk digunakan pada aplikasi atau sistem lain yang membutuhkan.
 
-## Tanggung Jawab Pengguna
+### Catatan Penting
+
+* Aplikasi ini **hanya membaca** data otentikasi yang sudah ada di sistem Anda; tidak melakukan perubahan atau membuat data baru di Dapodik.
+* **Selalu jaga kerahasiaan** data otentikasi Dapodik Anda.
+
+### Tanggung Jawab Pengguna
 Setiap dan semua penggunaan utilitas ini adalah tanggung jawab penuh pengguna. Pengembang utilitas ini TIDAK bertanggung jawab atas segala bentuk penyalahgunaan, kerusakan, kerugian, atau konsekuensi hukum yang timbul dari penggunaan aplikasi ini untuk tujuan ilegal, tidak etis, atau di luar batasan yang diizinkan.
