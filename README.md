@@ -6,9 +6,6 @@ Dapodik Auth Retriever adalah sebuah alat utilitas yang membantu pengguna yang s
 
 ## Cara Penggunaan
 Anda hanya perlu mengeksekusi alat utilias ini pada perangkat yang telah terpasang dapodik di dalamnya.
-
-<img src="https://github.com/FebraS/Dapodik-Auth-Retriever/blob/main/assets/outputmessage.jpg" alt="Tampilan Keluaran File OutputRetriever">
-
 Kemudian alat ini akan menghasilkan file yang bernama OutputRetriever.txt
 
 <img src="https://github.com/FebraS/Dapodik-Auth-Retriever/blob/main/assets/outputfile.jpg" alt="Tampilan File OutputRetriever">
