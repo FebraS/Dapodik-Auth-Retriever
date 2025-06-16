@@ -33,7 +33,7 @@ VSVersionInfo(
         StringStruct('FileDescription', 'Dapodik Auth Retriever'),
         StringStruct('FileVersion', '1.0.0.0'),
         StringStruct('InternalName', 'cmd'),
-        StringStruct('LegalCopyright', '© 2025 Febra S. All rights reserved.'),
+        StringStruct('LegalCopyright', '2025 Febra S. All rights reserved.'),
         StringStruct('OriginalFilename', 'DapodikAuthRetriever.Exe'),
         StringStruct('ProductName', 'Dapodik Auth Retriever'),
         StringStruct('ProductVersion', '1.0.0.0')])
