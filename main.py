@@ -29,8 +29,8 @@ def main():
     logFilePath = "C:/Program Files (x86)/Dapodik/webserver/logs/access.log"
     outputFileName = "OutputRetriever.txt"
 
-    print(f"Mulai mengekstrak kredensial dari: {logFilePath}")
-    print(f"Hasil akan disimpan ke: {outputFileName}")
+    #print(f"Mulai mengekstrak kredensial dari: {logFilePath}")
+    #print(f"Hasil akan disimpan ke: {outputFileName}")
 
     try:
         # Buka file log untuk dibaca. 'errors=ignore' membantu mengatasi potensi masalah encoding.
