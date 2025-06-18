@@ -25,7 +25,7 @@ def main():
     
     # Fungsi utama untuk membaca log, mengektrak data, dan menulis ke file output.
     
-    # Jalur file log
+    # Jalur file access.log
     logFilePath = "C:/Program Files (x86)/Dapodik/webserver/logs/access.log"
     # Nama file output
     outputFileName = "OutputRetriever.txt"
@@ -90,7 +90,8 @@ def main():
             print(f"Terjadi kesalahan tak terduga: {e}")
             outputFile.write(f"Terjadi kesalahan tak terduga: {e}\n")
         
-    except Exception as e: # Tangani error jika outputFile tidak bisa dibuat
+    except Exception as e:
+        # Tangani error jika outputFile tidak bisa dibuat
         print(f"Error: Tidak dapat membuat file output '{outputFileName}'.")
         print(f"Detail error: {e}")
     
