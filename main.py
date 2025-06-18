@@ -96,10 +96,10 @@ def main():
         print(f"Detail error: {e}")
     
     finally:
-        # Pastikan file log ditutup jika berhasil dibuka
+        # File access.log ditutup jika berhasil dibuka
         if logFile:
             logFile.close()
-        # Pastikan file output ditutup jika berhasil dibuka
+        # File OuputRetriever.txt ditutup jika berhasil dibuka
         if outputFile:
             outputFile.close()
 
