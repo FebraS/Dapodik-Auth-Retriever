@@ -6,10 +6,11 @@ Dapodik Auth Retriever adalah sebuah aplikasi utilitas yang membantu pengguna ya
 
 ### Fitur
 
-* **Pengambilan Auth Otomatis:** Secara cerdas mendeteksi dan mengambil data otentikasi dari lokasi instalasi Dapodik.
-* **Sederhana:** mudah digunakan, bahkan bagi pengguna non-teknis.
+* **Mencari Data Otentikasi (Auth) Dapodik:** Dapatkan informasi otentikasi yang diperlukan dari instalasi Dapodik Anda secara cepat.
+* **Mencari Informasi Detail Sekolah (NPSN & ID Sekolah):** Kini juga mampu mendapatkan detail penting seperti NPSN dan ID Sekolah
+* **Antarmuka Sederhana:** Desain yang intuitif dan mudah digunakan, bahkan bagi pengguna non-teknis.
 * **Ringan & Cepat:** Aplikasi berukuran kecil yang tidak membebani sistem Anda.
-* **Portabel:** Cukup unduh file `.exe` dan jalankan tanpa perlu instalasi khusus.
+* **Portabel:** Cukup unduh file .exe dan jalankan tanpa perlu instalasi khusus.
 
 ### Cara Penggunaan
 
