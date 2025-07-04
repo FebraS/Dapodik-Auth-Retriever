@@ -9,99 +9,85 @@ import urllib.parse
 import os
 import re
 
-def extractParam(queryString, paramName):
-    # Regex untuk mencari 'nama_parameter=' diikuti oleh nilai (yang tidak mengandung '&', spasi, atau baris baru)
+def extractParam(content, paramName):
+    """
+    Mengekstrak nilai parameter dari sebuah string konten.
+    Regex mencari 'nama_parameter=' diikuti oleh nilainya.
+    """
+    # Pola regex untuk menemukan nama_parameter=nilai
+    # Nilai adalah semua karakter kecuali '&', spasi, atau karakter baris baru
     pattern = rf"{re.escape(paramName)}=([^&\s\n\r]*)"
-    match = re.search(pattern, queryString)
+    match = re.search(pattern, content)
     
     if match:
         paramValueEncoded = match.group(1)
+        # Dekode nilai jika ada karakter khusus (misal: %40 untuk @)
         decodedValue = urllib.parse.unquote_plus(paramValueEncoded)
-        # Kembalikan nilai yang didekode jika tidak kosong, jika tidak kembalikan None
-        return decodedValue if decodedValue else None 
-    return None # Parameter tidak ditemukan
+        return decodedValue if decodedValue else None
+    return None
 
 def main():
-    
-    # Fungsi utama untuk membaca log, mengektrak data, dan menulis ke file output.
-    
-    # Jalur file access.log
-    logFilePath = "C:/Program Files (x86)/Dapodik/webserver/logs/access.log"
-    # Nama file output
-    outputFileName = "OutputRetriever.txt"
+    """
+    Fungsi utama untuk membaca file input, mengekstrak parameter yang ditentukan,
+    dan menulis hasilnya ke file output.
+    """
+    # File input yang akan dibaca
+    inputFilePath = "C:/Program Files (x86)/Dapodik/webserver/logs/access.log"
+    # File output untuk menyimpan hasil
+    outputFileName = "OutputRetriever.txt" 
 
-    # Inisialisasi logFile dan outputFile ke None. Ini penting jika ada exception sebelum logFile dibuka.
-    logFile = None 
-    outputFile = None
+    # Daftar parameter yang akan diekstrak
+    paramsToExtract = ["npsn", "sekolah_id", "kode_registrasi", "username", "password"]
+    
+    foundData = {}
 
     try:
-        # **Langkah 1: Buka file output terlebih dahulu.**
-        outputFile = open(outputFileName, 'w', encoding='utf-8')
+        # Buka file input untuk dibaca
+        with open(inputFilePath, 'r', encoding='utf-8', errors='ignore') as inputFile:
+            # Baca seluruh konten file ke dalam satu string
+            fileContent = inputFile.read()
+
+            # Ekstrak setiap parameter dari konten file
+            for param in paramsToExtract:
+                value = extractParam(fileContent, param)
+                if value:
+                    foundData[param] = value
         
+        # Tulis data yang ditemukan ke file output
+        with open(outputFileName, 'w', encoding='utf-8') as outputFile:
+            if foundData:
+                outputFile.write("------- Kredensial Ditemukan -------\n")
+                for key, value in foundData.items():
+                    outputFile.write(f"{key.replace('_', ' ').title()}: {value}\n")
+                outputFile.write("------------------------------\n")
+                print(f"Proses ekstraksi berhasil. Hasil disimpan di file '{outputFileName}'.")
+                print(f"   Total data yang ditemukan: {len(foundData)}")
+            else:
+                message = "Tidak ada parameter yang cocok ditemukan di dalam file."
+                outputFile.write(message + "\n")
+                print(f"{message}")
+
+    except FileNotFoundError:
+        message = f"Error: File log tidak ditemukan. \nPastikan Dapodik terpasang di perangkat Anda."
+        print(message)
+        # Tulis pesan error ke file output
         try:
-            # **Langkah 2: Coba buka file log.**
-            logFile = open(logFilePath, 'r', encoding='utf-8', errors='ignore')
+            with open(outputFileName, 'w', encoding='utf-8') as outputFile:
+                outputFile.write(message + "\n")
+        except IOError:
+            # Gagal menulis ke file output
+            pass
             
-            foundEntriesCount = 0
-            for lineNum, line in enumerate(logFile, 1):
-                # Cari pola "GET /" yang menandakan permintaan web
-                getRequestStart = line.find("GET /")
-                if getRequestStart != -1:
-                    # Cari tanda '?' yang menandakan awal string kueri
-                    queryStringStart = line.find('?', getRequestStart)
-                    if queryStringStart != -1:
-                        # Pindahkan posisi setelah '?'
-                        queryStringStart += 1
-                        # Cari pola " HTTP/1.1" yang menandakan akhir string kueri
-                        httpVersionEnd = line.find(" HTTP/1.1", queryStringStart)
-
-                        if httpVersionEnd != -1:
-                            # Ekstrak string kueri mentah
-                            rawQueryString = line[queryStringStart:httpVersionEnd]
-
-                            # Ekstrak dan dekode setiap parameter
-                            registrationCode = extractParam(rawQueryString, "kode_registrasi")
-                            username = extractParam(rawQueryString, "username")
-                            password = extractParam(rawQueryString, "password")
-
-                            # Hanya tulis ke file output jika ketiga parameter ditemukan dan tidak kosong
-                            if registrationCode and username and password:
-                                outputFile.write("------- Kredensial Ditemukan -------\n")
-                                outputFile.write(f"Kode Registrasi: {registrationCode}\n")
-                                outputFile.write(f"Username: {username}\n")
-                                outputFile.write(f"Password: {password}\n")
-                                outputFile.write("------------------------------------\n\n")
-                                foundEntriesCount += 1
-                                
-            print(f"\nProses ekstraksi selesai. Hasil disimpan di **{outputFileName}**.")
-            print(f"Total entri kredensial yang berhasil diekstrak: {foundEntriesCount}")
-
-        except FileNotFoundError:
-            print(f"Error: File log tidak ditemukan.")
-            print("Pastikan Dapodik terpasang di perangkat Anda.")
-            # Kita bisa menulis pesan error ini juga ke file output jika diinginkan
-            outputFile.write(f"Error: File log tidak ditemukan. \nPastikan Dapodik terpasang di perangkat Anda.\n")
-        except PermissionError:
-            print(f"Error: Tidak dapat mengakses file log.")
-            print("Pastikan Anda memiliki izin baca untuk file tersebut.")
-            # Kita bisa menulis pesan error ini juga ke file output jika diinginkan
-            outputFile.write(f"Error: Tidak dapat mengakses file log. \nPastikan Anda memiliki izin baca untuk file tersebut.\n")
-        except Exception as e:
-            print(f"Terjadi kesalahan tak terduga: {e}")
-            outputFile.write(f"Terjadi kesalahan tak terduga: {e}\n")
-        
     except Exception as e:
-        # Tangani error jika outputFile tidak bisa dibuat
-        print(f"Error: Tidak dapat membuat file output '{outputFileName}'.")
-        print(f"Detail error: {e}")
-    
-    finally:
-        # File access.log ditutup jika berhasil dibuka
-        if logFile:
-            logFile.close()
-        # File OuputRetriever.txt ditutup jika berhasil dibuka
-        if outputFile:
-            outputFile.close()
+        message = f"Terjadi kesalahan tak terduga: {e} \nPastikan Anda memiliki izin baca untuk file tersebut."
+        print(message)
+        # Tulis pesan error ke file output
+        try:
+            with open(outputFileName, 'w', encoding='-utf8') as outputFile:
+                outputFile.write(message + "\n")
+        except IOError:
+            # Gagal menulis ke file output
+            pass
 
 if __name__ == "__main__":
     main()
