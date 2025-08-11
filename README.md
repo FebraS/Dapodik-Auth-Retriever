@@ -21,6 +21,7 @@ Dapodik Auth Retriever adalah sebuah aplikasi utilitas yang membantu pengguna ya
 
 ### Catatan Penting
 
+* Aplikasi ini telah diuji dan berjalan pada Dapodik versi 2026.a.
 * Aplikasi ini **hanya membaca** data otentikasi yang sudah ada di sistem Anda; tidak melakukan perubahan atau membuat data baru di Dapodik.
 * **Selalu jaga kerahasiaan** data otentikasi Dapodik Anda.
 
